@@ -1,11 +1,34 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 
+// https://api.github.com/users/:username
 function App() {
+  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
+
+  function handleAddUser(name) {
+    setName(name);
+  }
+
+  useEffect(
+    function () {
+      if (name.length > 1) {
+        async function fetchUser() {
+          const response = await fetch(`https://api.github.com/users/:${name}`);
+          const data = await response.json();
+          setUser(data);
+        }
+        fetchUser();
+      }
+    },
+    [name]
+  );
+
   return (
     <main>
       <div className="container">
         <Header></Header>
-        <Search></Search>
+        <Search name={name} onAddName={handleAddUser} />
         <User></User>
       </div>
     </main>
@@ -47,18 +70,26 @@ function Theme() {
   );
 }
 
-function Search() {
+function Search({ name, onAddName }) {
   return (
     <div className="search">
-      <span className="search-icon">
-        <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M10.609 0c5.85 0 10.608 4.746 10.608 10.58 0 2.609-.952 5-2.527 6.847l5.112 5.087a.87.87 0 01-1.227 1.233l-5.118-5.093a10.58 10.58 0 01-6.848 2.505C4.759 21.16 0 16.413 0 10.58 0 4.747 4.76 0 10.609 0zm0 1.74c-4.891 0-8.87 3.965-8.87 8.84 0 4.874 3.979 8.84 8.87 8.84a8.855 8.855 0 006.213-2.537l.04-.047a.881.881 0 01.058-.053 8.786 8.786 0 002.558-6.203c0-4.875-3.979-8.84-8.87-8.84z"
-            fill="#0079ff"
-          />
-        </svg>
-      </span>
-      <input className="search-input" placeholder="GitHub username..." />
+      <div>
+        <span className="search-icon">
+          <svg height="24" width="25" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M10.609 0c5.85 0 10.608 4.746 10.608 10.58 0 2.609-.952 5-2.527 6.847l5.112 5.087a.87.87 0 01-1.227 1.233l-5.118-5.093a10.58 10.58 0 01-6.848 2.505C4.759 21.16 0 16.413 0 10.58 0 4.747 4.76 0 10.609 0zm0 1.74c-4.891 0-8.87 3.965-8.87 8.84 0 4.874 3.979 8.84 8.87 8.84a8.855 8.855 0 006.213-2.537l.04-.047a.881.881 0 01.058-.053 8.786 8.786 0 002.558-6.203c0-4.875-3.979-8.84-8.87-8.84z"
+              fill="#0079ff"
+            />
+          </svg>
+        </span>
+        <input
+          value={name}
+          onChange={(event) => onAddName(event.target.value)}
+          type="text"
+          className="search-input"
+          placeholder="GitHub username..."
+        />
+      </div>
       <button className="search-button">Search</button>
     </div>
   );
@@ -66,7 +97,7 @@ function Search() {
 
 function User() {
   return (
-    <div>
+    <div className="user">
       <Bio></Bio>
       <GitHubNumbers></GitHubNumbers>
       <Links></Links>
@@ -81,7 +112,7 @@ function Bio() {
       <div className="user-details">
         <h2 className="user-name">Name</h2>
         <span className="username">username</span>
-        <p className="user-bio">bio</p>
+        <p className="user-bio">This profile has no bio</p>
       </div>
       <div className="user-joined-date">
         <p className="user-joined-date-text">Joined 25 Jan 2011</p>
@@ -92,18 +123,18 @@ function Bio() {
 
 function GitHubNumbers() {
   return (
-    <div>
+    <div className="github-numbers">
       <div>
-        <span>Repos</span>
-        <span>8</span>
+        <span className="github-text">Repos</span>
+        <span className="github-number">8</span>
       </div>
       <div>
-        <span>Followers</span>
-        <span>3938</span>
+        <span className="github-text">Followers</span>
+        <span className="github-number">3938</span>
       </div>
       <div>
-        <span>Following</span>
-        <span>9</span>
+        <span className="github-text">Following</span>
+        <span className="github-number">9</span>
       </div>
     </div>
   );
