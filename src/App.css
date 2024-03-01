@@ -6,6 +6,7 @@
   --very-dark: #010915;
   --light-gray: #f6f8ff;
   --white: #fefefe;
+  --dark-blue: #141d2f;
 }
 
 * {
@@ -23,12 +24,19 @@ img {
 }
 
 body {
-  background-color: var(--light-gray);
   font-family: "Space Mono", monospace;
   font-size: 1.5rem;
   line-height: 2.5rem;
   font-weight: 400;
   font-style: normal;
+}
+
+#light {
+  background-color: var(--light-gray);
+}
+
+#dark {
+  background-color: var(--dark-blue);
 }
 
 main {
@@ -75,8 +83,39 @@ h4 {
   font-weight: 700;
 }
 
+#light .logo {
+  color: var(--very-dark);
+}
+
+#dark .logo {
+  color: var(--white);
+}
+
+.theme {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.theme-text {
+  font-weight: 700;
+}
+
+#light .theme-text {
+  color: var(--very-dark);
+}
+
+#dark .theme-text {
+  color: var(--white);
+}
+
+.theme-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .search {
-  background-color: var(--white);
   padding: 2.2rem 1rem 2.2rem 3.2rem;
   border-radius: 1.5rem;
 
@@ -88,11 +127,84 @@ h4 {
   box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.03);
 }
 
-.user {
+#light .search {
   background-color: var(--white);
+}
+
+#dark .search {
+  background-color: #1e2a47;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.search-input {
+  border: none;
+
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#light .search-input {
+  color: var(--very-dark);
+}
+
+#dark .search-input {
+  color: var(--white);
+  background-color: #1e2a47;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-input:active,
+.search-input:focus {
+  border: none;
+}
+
+.search-button {
+  padding: 1.2rem 2.3rem 1.3rem 2.4rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+#light .search-button {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+#dark .search-button {
+  color: var(--white);
+  background-color: var(--blue);
+}
+
+.user {
   border-radius: 1.5rem;
   padding: 4.8rem;
   box-shadow: 0.5rem 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.03);
+}
+
+#light .user {
+  background-color: var(--white);
+}
+
+#dark .user {
+  background-color: #1e2a47;
+}
+
+#light .user-name {
+  color: var(--very-dark);
+}
+
+#dark .user-name {
+  color: var(--white);
 }
 
 .bio {
@@ -105,28 +217,46 @@ h4 {
   color: var(--blue);
 }
 
-.user-bio {
+#light .user-bio {
   color: var(--dark-blue);
 }
 
-.user-joined-date-text {
+#dark .user-bio {
+  color: var(--gray);
+}
+
+#light .user-joined-date-text {
   color: var(--very-dark);
+}
+
+#dark .user-joined-date-text {
+  color: var(--gray);
 }
 
 .user-image {
   width: 11.7rem;
   height: 11.7rem;
-  background-color: #2b3442;
+  border-radius: 50%;
 }
 
 .github-numbers {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3.7rem;
-  background-color: var(--light-gray);
+
   border-radius: 1.5rem;
 
   padding: 1.5rem 3.2rem 1.7rem 3.2rem;
+}
+
+#light .github-numbers {
+  background-color: var(--light-gray);
+  color: var(--very-dark);
+}
+
+#dark .github-numbers {
+  background-color: var(--dark-blue);
+  color: var(--white);
 }
 
 .github-numbers div {
@@ -137,7 +267,14 @@ h4 {
 .github-text {
   font-size: 1.3rem;
   line-height: 2rem;
-  color: var(--dark-blue);
+}
+
+#light .github-text {
+  color: var(--gray);
+}
+
+#dark .github-text {
+  color: var(--gray);
 }
 
 .github-number {
@@ -155,5 +292,24 @@ h4 {
 .link {
   display: flex;
   gap: 1.9rem;
+}
+
+#light .link {
   color: var(--dark-blue);
+}
+
+#dark .link {
+  color: var(--white);
+}
+
+#light .link-text:visited {
+  color: var(--dark-blue);
+}
+
+#dark .link-text:visited {
+  color: var(--white);
+}
+
+.disabled {
+  color: var(--gray);
 }
