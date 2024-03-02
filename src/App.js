@@ -7,8 +7,6 @@ function App() {
   const [user, setUser] = useState("");
   const [theme, setTheme] = useState("light");
 
-  console.log(theme);
-
   function handleTheme() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
   }
@@ -83,6 +81,19 @@ function Theme({ theme, onHandleTheme }) {
 function Search({ onAddName }) {
   const nameRef = useRef("");
 
+  useEffect(
+    function () {
+      function callback(event) {
+        if (event.code === "Enter") {
+          onAddName(nameRef.current);
+        }
+      }
+
+      document.addEventListener("keydown", callback);
+    },
+    [onAddName]
+  );
+
   return (
     <div className="search">
       <div className="input-box">
@@ -125,7 +136,6 @@ function User({ user }) {
 }
 
 function Bio({ user }) {
-  console.log(user);
   let dateText = user.created_at;
   let date = new Date(dateText);
 
@@ -149,18 +159,24 @@ function Bio({ user }) {
 
   return (
     <div className="bio">
-      <div>
-        <img className="user-image" src={user.avatar_url} alt={user.name}></img>
-      </div>
-      <div className="user-details">
-        <h2 className="user-name">{user.name}</h2>
-        <span className="username">{user.login}</span>
-        <p className="user-bio">
-          {user.bio ? user.bio : `This profile has no bio`}
-        </p>
-      </div>
-      <div className="user-joined-date">
-        <p className="user-joined-date-text">{`Joined ${day} ${month} ${year}`}</p>
+      <img className="user-image" src={user.avatar_url} alt={user.name}></img>
+
+      <div className="bio-box">
+        <div className="user-details">
+          <div>
+            <h2 className="user-name">{user.name}</h2>
+            <span className="username">{user.login}</span>
+          </div>
+          <div className="user-joined-date">
+            <p className="user-joined-date-text">{`Joined ${day} ${month} ${year}`}</p>
+          </div>
+        </div>
+
+        <div>
+          <p className="user-bio">
+            {user.bio ? user.bio : `This profile has no bio`}
+          </p>
+        </div>
       </div>
     </div>
   );

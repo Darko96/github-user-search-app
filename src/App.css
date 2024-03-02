@@ -208,13 +208,24 @@ h4 {
 }
 
 .bio {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 3.7rem;
+}
+
+.user-details {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2.1rem;
 }
 
 .username {
+  display: block;
   color: var(--blue);
+  margin-bottom: 2rem;
+}
+
+.user-bio {
+  margin-bottom: 3.2rem;
 }
 
 #light .user-bio {
@@ -247,6 +258,7 @@ h4 {
   border-radius: 1.5rem;
 
   padding: 1.5rem 3.2rem 1.7rem 3.2rem;
+  margin-left: 15.2rem;
 }
 
 #light .github-numbers {
@@ -287,6 +299,7 @@ h4 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 1.9rem;
+  margin-left: 15.2rem;
 }
 
 .link {
