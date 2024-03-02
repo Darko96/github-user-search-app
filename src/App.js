@@ -16,7 +16,6 @@ function App() {
   function handleAddUser(name) {
     setName(name);
   }
-
   useEffect(
     function () {
       if (name.length > 1) {
@@ -126,7 +125,8 @@ function User({ user }) {
 }
 
 function Bio({ user }) {
-  let dateText = "2021-12-01T08:49:03Z";
+  console.log(user);
+  let dateText = user.created_at;
   let date = new Date(dateText);
 
   let year = date.getFullYear();
