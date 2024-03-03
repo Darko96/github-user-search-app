@@ -158,10 +158,11 @@ function Bio({ user }) {
   let day = date.getDate();
 
   return (
-    <div className="bio">
-      <img className="user-image" src={user.avatar_url} alt={user.name}></img>
-
-      <div className="bio-box">
+    <div className="github-user">
+      <div className="github-user-img">
+        <img className="user-image" src={user.avatar_url} alt={user.name}></img>
+      </div>
+      <div className="github-user-detatils">
         <div className="user-details">
           <div>
             <h2 className="user-name">{user.name}</h2>
@@ -171,12 +172,11 @@ function Bio({ user }) {
             <p className="user-joined-date-text">{`Joined ${day} ${month} ${year}`}</p>
           </div>
         </div>
-
-        <div>
-          <p className="user-bio">
-            {user.bio ? user.bio : `This profile has no bio`}
-          </p>
-        </div>
+      </div>
+      <div className="github-user-bio">
+        <p className="user-bio">
+          {user.bio ? user.bio : `This profile has no bio`}
+        </p>
       </div>
     </div>
   );
@@ -213,7 +213,9 @@ function Links({ user }) {
             />
           </svg>
         </span>
-        <span className="link-text">{user.location}</span>
+        <span className="link-text">
+          {user.location ? user.location : `Not Available`}
+        </span>
       </div>
       <div className="link">
         <span className="link-img">
@@ -238,7 +240,7 @@ function Links({ user }) {
           </svg>
         </span>
         <a href={user.blog} className="link-text">
-          {user.blog}
+          {user.blog ? user.blog : `Not Available`}
         </a>
       </div>
       <div className="link">
@@ -249,7 +251,9 @@ function Links({ user }) {
             </g>
           </svg>
         </span>
-        <span className="link-text">{user.company}</span>
+        <span className="link-text">
+          {user.company ? user.company : `Not Available`}
+        </span>
       </div>
     </div>
   );
