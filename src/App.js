@@ -135,7 +135,7 @@ function Search({ onAddName, error }) {
           onChange={(event) => (nameRef.current = event.target.value)}
           type="text"
           className="search-input"
-          placeholder="GitHub username..."
+          placeholder="Search GitHub username..."
         />
       </div>
       {error && (
