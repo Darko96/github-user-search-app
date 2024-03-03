@@ -326,3 +326,211 @@ h4 {
 .disabled {
   color: var(--gray);
 }
+
+/* ************** TABLED ************** */
+
+@media (max-width: 768px) {
+  body {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+  }
+
+  .container {
+    max-width: 57rem;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    line-height: 3.8rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    line-height: 3.3rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  .header {
+    margin-bottom: 3.5rem;
+  }
+
+  .logo {
+    font-size: 2.6rem;
+    line-height: 3.8rem;
+  }
+
+  .search-input {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  .user {
+    padding: 4rem;
+  }
+
+  .bio {
+    display: flex;
+    gap: 4.1rem;
+  }
+
+  /* TODO */
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .username {
+    display: block;
+    color: var(--blue);
+    margin-bottom: 0.4rem;
+  }
+
+  .user-image {
+    width: 11.7rem;
+    height: 11.7rem;
+    border-radius: 50%;
+  }
+
+  .github-numbers {
+    margin-bottom: 3rem;
+    margin-left: 0;
+  }
+
+  .github-text {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  .github-number {
+    font-size: 2.2rem;
+    line-height: 3.3rem;
+  }
+
+  .links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-left: 0;
+  }
+
+  .link-text {
+    font-size: 1.2rem;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 425px) {
+  body {
+    font-size: 1.3rem;
+  }
+
+  .container {
+    max-width: 32rem;
+  }
+
+  h1 {
+    font-size: 2.6rem;
+    line-height: 3.8rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+    line-height: 3.3rem;
+  }
+
+  h3 {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+  }
+
+  h4 {
+    font-size: 1.3rem;
+    line-height: 2rem;
+  }
+
+  .header {
+    margin-bottom: 3.6rem;
+  }
+
+  .logo {
+    font-size: 2.6rem;
+  }
+
+  .search {
+    padding: 2rem 0.7rem 2rem 1.6rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .search-input {
+    font-size: 1.3rem;
+  }
+
+  .input-box {
+    gap: 0.9rem;
+  }
+
+  .search-input {
+    font-size: 1.3rem;
+  }
+
+  .search-button {
+    padding: 1.2rem 1.6rem 1.3rem 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  .user {
+    padding: 3.2rem 2.4rem;
+  }
+
+  .bio {
+    display: flex;
+    gap: 1.9rem;
+  }
+
+  /* TODO */
+  .user-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .username {
+    margin-bottom: 0.6rem;
+  }
+
+  .user-image {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .github-numbers {
+    margin-bottom: 2.4rem;
+  }
+
+  .github-text {
+    font-size: 1.1rem;
+  }
+
+  .github-number {
+    font-size: 1.6rem;
+  }
+
+  .links {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .link-text {
+    font-size: 1.3rem;
+  }
+}
