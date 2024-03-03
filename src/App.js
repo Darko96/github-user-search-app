@@ -81,7 +81,11 @@ function Theme({ theme, onHandleTheme }) {
       {theme === "light" && <span className="theme-text">Dark</span>}
       {theme === "dark" && <span className="theme-text">Light</span>}
 
-      <button className="theme-button" onClick={onHandleTheme}>
+      <button
+        className="theme-button"
+        title="buttonTheme"
+        onClick={onHandleTheme}
+      >
         {theme === "light" && (
           <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
             <path
