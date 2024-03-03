@@ -214,7 +214,7 @@ function Links({ user, theme }) {
             />
           </svg>
         </span>
-        <span className="link-text">
+        <span className={`link-text ${!user.location && "disabled"}`}>
           {user.location ? user.location : `Not Available`}
         </span>
       </div>
@@ -227,7 +227,7 @@ function Links({ user, theme }) {
             />
           </svg>
         </span>
-        <span className="link-text disabled">
+        <span className={`link-text ${!user.twitter_username && "disabled"}`}>
           {user.twitter_username ? user.twitter_username : `Not Available`}
         </span>
       </div>
@@ -240,7 +240,10 @@ function Links({ user, theme }) {
             </g>
           </svg>
         </span>
-        <a href={user.blog} className="link-text underline">
+        <a
+          href={user.blog}
+          className={`link-text underline ${!user.blog && "disabled"}`}
+        >
           {user.blog ? user.blog : `Not Available`}
         </a>
       </div>
@@ -252,7 +255,7 @@ function Links({ user, theme }) {
             </g>
           </svg>
         </span>
-        <span className="link-text">
+        <span className={`link-text ${!user.company && "disabled"}`}>
           {user.company ? user.company : `Not Available`}
         </span>
       </div>
