@@ -3,7 +3,7 @@ import "./App.css";
 
 // https://api.github.com/users/:username
 function App() {
-  const [name, setName] = useState("darko96");
+  const [name, setName] = useState("octocat");
   const [user, setUser] = useState("");
   const [theme, setTheme] = useState(function () {
     const storedTheme = localStorage.getItem("theme");
@@ -197,7 +197,7 @@ function Bio({ user }) {
         <div className="user-details">
           <div>
             <h2 className="user-name">{user.name}</h2>
-            <span className="username">{user.login}</span>
+            <span className="username">@{user.login}</span>
           </div>
           <div className="user-joined-date">
             <p className="user-joined-date-text">{`Joined ${day} ${month} ${year}`}</p>
