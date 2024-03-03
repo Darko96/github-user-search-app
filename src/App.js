@@ -5,7 +5,11 @@ import "./App.css";
 function App() {
   const [name, setName] = useState("darko96");
   const [user, setUser] = useState("");
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(function () {
+    const storedTheme = localStorage.getItem("theme");
+    return storedTheme ? JSON.parse(storedTheme) : "dark";
+  });
+  const [error, setError] = useState(null);
 
   function handleTheme() {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));
@@ -14,14 +18,27 @@ function App() {
   function handleAddUser(name) {
     setName(name);
   }
+
+  console.log(theme);
+
   useEffect(
     function () {
       if (name.length > 1) {
         async function fetchUser() {
-          const response = await fetch(`https://api.github.com/users/${name}`);
-          console.log(response);
-          const data = await response.json();
-          setUser(data);
+          try {
+            const response = await fetch(
+              `https://api.github.com/users/${name}`
+            );
+
+            if (!response.ok) {
+              throw Error("Greska");
+            }
+
+            const data = await response.json();
+            setUser(data);
+          } catch (error) {
+            setError(error.message);
+          }
         }
         fetchUser();
       }
@@ -29,11 +46,18 @@ function App() {
     [name]
   );
 
+  useEffect(
+    function () {
+      localStorage.setItem("theme", JSON.stringify(theme));
+    },
+    [theme]
+  );
+
   return (
     <main id={theme}>
       <div className="container">
-        <Header theme={theme} onHandleTheme={handleTheme}></Header>
-        <Search name={name} onAddName={handleAddUser} />
+        <Header theme={theme} onHandleTheme={handleTheme} />
+        <Search name={name} onAddName={handleAddUser} error={error} />
         <User user={user} theme={theme}></User>
       </div>
     </main>
@@ -79,7 +103,7 @@ function Theme({ theme, onHandleTheme }) {
   );
 }
 
-function Search({ onAddName }) {
+function Search({ onAddName, error }) {
   const nameRef = useRef("");
 
   useEffect(
@@ -114,6 +138,12 @@ function Search({ onAddName }) {
           placeholder="GitHub username..."
         />
       </div>
+      {error && (
+        <div className="error">
+          <p>No results</p>
+        </div>
+      )}
+
       <button
         onClick={() => {
           onAddName(nameRef.current);
