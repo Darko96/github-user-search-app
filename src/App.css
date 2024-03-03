@@ -305,6 +305,7 @@ h4 {
 .links {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  column-gap: 2.4rem;
   row-gap: 1.9rem;
   margin-left: 15.2rem;
 }
@@ -314,9 +315,20 @@ h4 {
   gap: 1.9rem;
 }
 
+.link-text {
+  font-size: 1.2rem;
+  max-width: 20rem;
+  overflow: hidden;
+}
+
 #dark .link-text {
   color: var(--white);
   text-decoration: none;
+}
+
+#dark .underline:hover {
+  color: var(--white);
+  text-decoration: underline;
 }
 
 #light .link {
@@ -328,19 +340,20 @@ h4 {
   text-decoration: none;
 }
 
+#light .underline:hover {
+  color: #4b6a9b;
+  text-decoration: underline;
+}
+
 #dark .link {
   color: var(--white);
 }
 
-#light .link-text:visited {
-  color: var(--dark-blue);
+#light .disabled {
+  color: rgba(75, 106, 155, 0.5);
 }
 
-#dark .link-text:visited {
-  color: var(--white);
-}
-
-.disabled {
+#dark .link .disabled {
   color: var(--gray);
 }
 

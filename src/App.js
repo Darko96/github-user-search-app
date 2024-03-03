@@ -240,11 +240,11 @@ function Links({ user, theme }) {
             </g>
           </svg>
         </span>
-        <a href={user.blog} className="link-text">
+        <a href={user.blog} className="link-text underline">
           {user.blog ? user.blog : `Not Available`}
         </a>
       </div>
-      <div className="link">
+      <div className="link ">
         <span className="link-img">
           <svg height="20" width="20" xmlns="http://www.w3.org/2000/svg">
             <g fill={theme === "dark" ? "#fff" : "#4b6a9b"}>
